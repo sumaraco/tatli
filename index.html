@@ -204,21 +204,38 @@
     }
 
     let yesScale = 1;
-    function growYes() {
-      yesScale += 0.2;
+    function growYes(amount = 0.2) {
+      yesScale += amount;
       yesBtn.style.transform = `translateY(-50%) scale(${yesScale})`;
     }
 
     let noScale = 1;
-    function shrinkNo() {
-      noScale = Math.max(0.2, noScale - 0.15);
+    let noClicks = 0;
+
+    function shrinkNoByClickCount() {
+      noClicks += 1;
+
+      if (noClicks === 1) noScale = 0.55;      // 1. tık: baya küçül
+      if (noClicks === 2) noScale = 0.18;      // 2. tık: nokta gibi
+      if (noClicks >= 3) {
+        // 3. tık: sahneden sil
+        noBtn.remove();
+        return;
+      }
+
       noBtn.style.transform = `translateY(-50%) scale(${noScale})`;
     }
 
     noBtn.addEventListener("click", e => {
       e.preventDefault();
-      shrinkNo();
-      growYes();
+
+      // hyr küçül
+      shrinkNoByClickCount();
+
+      // evet her tıkta daha fazla büyüsün (mevcut oranlara göre artan)
+      // 1. tık +0.35, 2. tık +0.55, 3. tık +0.8 (noBtn silinse bile büyüme devam)
+      const growBy = noClicks === 1 ? 0.35 : (noClicks === 2 ? 0.55 : 0.8);
+      growYes(growBy);
     });
 
     function goToScreen(which) {
