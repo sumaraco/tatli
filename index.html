@@ -156,7 +156,6 @@
 
     <div class="diet-area" id="dietArea">
       <button id="dietBtn">diyetteyim</button>
-      
     </div>
 
     <section class="result" id="resultYes">
@@ -206,46 +205,21 @@
 
     let yesScale = 1;
     function growYes() {
-      yesScale += 0.5;
+      yesScale += 0.2;
       yesBtn.style.transform = `translateY(-50%) scale(${yesScale})`;
     }
 
-    function clamp(n, min, max) {
-      return Math.max(min, Math.min(max, n));
+    let noScale = 1;
+    function shrinkNo() {
+      noScale = Math.max(0.2, noScale - 0.15);
+      noBtn.style.transform = `translateY(-50%) scale(${noScale})`;
     }
 
-    function moveNo(px, py) {
-      const z = zone.getBoundingClientRect();
-      const b = noBtn.getBoundingClientRect();
-
-      let dx = (b.left + b.width / 2) - px;
-      let dy = (b.top + b.height / 2) - py;
-      let mag = Math.hypot(dx, dy) || 1;
-      dx /= mag;
-      dy /= mag;
-
-      let newLeft = (b.left - z.left) + dx * 150;
-      let newTop  = (b.top - z.top) + dy * 150;
-
-      newLeft = clamp(newLeft, 0, z.width - b.width);
-      newTop  = clamp(newTop, 0, z.height - b.height);
-
-      noBtn.style.left = newLeft + "px";
-      noBtn.style.top = newTop + "px";
-
+    noBtn.addEventListener("click", e => {
+      e.preventDefault();
+      shrinkNo();
       growYes();
-    }
-
-    zone.addEventListener("pointermove", e => {
-      const b = noBtn.getBoundingClientRect();
-      const d = Math.hypot(
-        (b.left + b.width / 2) - e.clientX,
-        (b.top + b.height / 2) - e.clientY
-      );
-      if (d < 140) moveNo(e.clientX, e.clientY);
     });
-
-    noBtn.addEventListener("click", e => e.preventDefault());
 
     function goToScreen(which) {
       title.style.display = "none";
