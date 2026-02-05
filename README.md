@@ -1,4 +1,4 @@
-birlikte tatlı yemek istediğin arkadaşlarına gönder
+birlikte tatlı yemek istediğin arkadaşlarına gönder.
 hyr derlerse sakın üzülme, 
-bana gönder
+bana gönder.
 ben tatlıya her zaman evet derim.
