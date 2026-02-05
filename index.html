@@ -168,6 +168,28 @@
   </main>
 
   <script>
+    //Ceza mı bu 
+    //Çektiğim çile mi
+    //Yıllardır tuttuğum nöbet bitmeyecek mi?
+    //Bir küçük kar tanesi gibiyim
+    //Avucunda eriyen dön bebeğim
+
+    //Çöllerdeyim yanıyorum
+    //Kutuptayım üşüyorum
+    //Ceza benim çekiyorum ne olur dön
+    //Uzanıyorum tutamıyorum
+    //Özlüyorum ağlıyorum
+    //Yasak mısın anlamıyorum ne olur dön
+
+    //Sevmesen de beni özledim sesini
+    //Git desem de yine gitmesen
+    //Yıllardır çektiğim bu hasret mi çile mi?
+    //Haram mısın bana bi' bilsem
+
+    //Bebeğim benim, hayalet sevgilim
+    //Bebeğim benim, hayalet sevgilim
+    //Hayalet sevgilim
+
     const zone = document.getElementById("zone");
     const yesBtn = document.getElementById("yesBtn");
     const noBtn = document.getElementById("noBtn");
@@ -218,7 +240,6 @@
       if (noClicks === 1) noScale = 0.55;      
       if (noClicks === 2) noScale = 0.18;      
       if (noClicks >= 3) {
-        
         noBtn.remove();
         return;
       }
@@ -229,11 +250,9 @@
     noBtn.addEventListener("click", e => {
       e.preventDefault();
 
-      // hyr küçül
       shrinkNoByClickCount();
 
-      // evet her tıkta daha fazla büyüsün 
-      const growBy = noClicks === 1 ? 0.5 : (noClicks === 2 ? 0.9 : 1.4);
+      const growBy = noClicks === 1 ? 0.5 : (noClicks === 2 ? 0.9 : 1.3);
       growYes(growBy);
     });
 
