@@ -215,10 +215,10 @@
     function shrinkNoByClickCount() {
       noClicks += 1;
 
-      if (noClicks === 1) noScale = 0.55;      // 1. tık: baya küçül
-      if (noClicks === 2) noScale = 0.18;      // 2. tık: nokta gibi
+      if (noClicks === 1) noScale = 0.55;      
+      if (noClicks === 2) noScale = 0.18;      
       if (noClicks >= 3) {
-        // 3. tık: sahneden sil
+        
         noBtn.remove();
         return;
       }
@@ -232,9 +232,8 @@
       // hyr küçül
       shrinkNoByClickCount();
 
-      // evet her tıkta daha fazla büyüsün (mevcut oranlara göre artan)
-      // 1. tık +0.35, 2. tık +0.55, 3. tık +0.8 (noBtn silinse bile büyüme devam)
-      const growBy = noClicks === 1 ? 0.35 : (noClicks === 2 ? 0.55 : 0.8);
+      // evet her tıkta daha fazla büyüsün 
+      const growBy = noClicks === 1 ? 0.5 : (noClicks === 2 ? 0.9 : 1.4);
       growYes(growBy);
     });
 
